@@ -8,7 +8,7 @@ int main() {
   char b1[100], b2[100];
   srand(time(0));
 
-  while ((St1 == 0) || (St2 == 0)) {
+  while (St == 0) {
     proc = (rand() % 106);
     Proceses(b1, b2, sizeof(b1), &proc);
   }
