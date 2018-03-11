@@ -1,0 +1,11 @@
+#PBS -N lab1
+#PBS -l nodes=1:ppn=1
+#PBS -j oe
+#PBS -q release
+
+for ((M=256;M <= 4000; M+=256))
+do
+let "N=M"
+let "P=M"
+./lab2 $M $N $P
+done
