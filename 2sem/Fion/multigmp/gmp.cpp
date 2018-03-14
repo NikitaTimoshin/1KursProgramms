@@ -57,7 +57,7 @@ int main()
      printf("Файл невозможно открыть или создать\n");
   else
   {
-    gmp_fprintf (f,"q = %Zx p = %Zx g = %Zx",q,p,g);
+    gmp_fprintf (f,"%Zx %Zx %Zx",q,p,g);
   }
   fclose(f);
 
