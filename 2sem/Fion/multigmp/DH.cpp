@@ -9,7 +9,9 @@
 FILE *fp;
 
 int main() {
-
+  gmp_randstate_t state;
+  gmp_randinit_mt(state);
+  gmp_randseed_ui(state, time(0));
   mpz_t q, p, g, x, y, X, Y, xx, yy;
   mpz_inits(q, p, g, x, y, X, Y, xx, yy, 0);
   if ((fp = fopen("parametrs.txt", "r")) == NULL)
@@ -17,8 +19,10 @@ int main() {
   gmp_fscanf(fp, "%Zx %Zx %Zx", q, p, g);
   fclose(fp);
   gmp_printf("q = %Zx\n\np = %Zx\n\ng = %Zx\n\n", q, p, g);
-  mpz_set(x, p);
-  mpz_set(y, p);
+  // mpz_set(x, p);
+  // mpz_set(y, p);
+  mpz_urandomm(x, state, p);
+  mpz_urandomm(y, state, p);
   while (mpz_cmp(x, p) > -1) {
     mpz_sub_ui(x, x, 5);
   }
